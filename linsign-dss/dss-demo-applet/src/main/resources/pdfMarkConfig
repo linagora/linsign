@@ -1,0 +1,7 @@
+pdfAxisX : 50
+pdfAxisY : 780
+pdfPage	 : 1
+fontName : TimesRoman
+fontStyle: 1
+fontSize : 5
+textMark : Signé électroniquement par $signer_name en date du $signing_time. 

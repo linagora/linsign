@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.linagora.linsign</groupId>
+		<artifactId>linsign</artifactId>
+		<version>2.1.14</version>
+	</parent>
+
+	<artifactId>linsign-applet</artifactId>
+	<version>2.1.0</version>
+	<packaging>jar</packaging>
+	<name>LinSign Applet</name>
+	<description>LinSign Applet is a module of LinSign, which provides the applet of the application.</description>
+	<url>https://github.com/linagora/linsign/linsign-applet</url>
+
+
+	<groupId>org.gsafeproject.signature</groupId>
+	<artifactId>signature-client</artifactId>
+
+	<properties>
+
+		<maven.compiler.version>3.0</maven.compiler.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<version.java-plugin>1.6.0_45</version.java-plugin>
+		<java.home>/usr/lib/jvm/java-6-oracle/jre</java.home>
+
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>eu.europa.ec.joinup.sd-dss</groupId>
+			<artifactId>dss-document</artifactId>
+			<version>4.5.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-collections</groupId>
+					<artifactId>commons-collections</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>eu.europa.ec.joinup.sd-dss</groupId>
+			<artifactId>dss-webservices-client</artifactId>
+			<version>4.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jgoodies</groupId>
+			<artifactId>jgoodies-forms</artifactId>
+			<version>1.6.0</version>
+
+		</dependency>
+		<dependency>
+			<groupId>com.jgoodies</groupId>
+			<artifactId>jgoodies-binding</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+
+		<dependency>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/resources/linsignMsCapi.jar</systemPath>
+			<groupId>com.linagora</groupId>
+			<artifactId>linsign</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.google.guava</groupId> -->
+		<!-- <artifactId>guava</artifactId> -->
+		<!-- <version>12.0</version> -->
+		<!-- </dependency> -->
+
+		<dependency>
+			<groupId>com.sun.jdk</groupId>
+			<artifactId>plugin</artifactId>
+			<version>1.6.0_45</version>
+			<type>jar</type>
+			<scope>system</scope>
+			<systemPath>/usr/lib/jvm/java-6-oracle/jre/lib/plugin.jar</systemPath>
+			<exclusions>
+				<exclusion>
+					<groupId>com.liferay</groupId>
+					<artifactId>com.ctc.wstx</artifactId>
+				</exclusion>
+			</exclusions>
+
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>signature-client</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>1.6</version>
+				<configuration>
+					<createDependencyReducedPom>true</createDependencyReducedPom>
+					<filters>
+						<filter>
+							<artifact>*:*</artifact>
+							<excludes>
+								<exclude>META-INF/*.SF</exclude>
+								<exclude>META-INF/*.DSA</exclude>
+								<exclude>META-INF/*.RSA</exclude>
+								<exclude>**/logback.xml</exclude>
+							</excludes>
+						</filter>
+					</filters>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>org.gsafeproject.signature.client.LinSign</mainClass>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/services/com.sun.tools.xjc.Plugin</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/cxf/cxf.extension</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+									<resource>META-INF/extensions.xml</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+									<resource>META-INF/cxf/extensions.xml</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/cxf/bus-extensions.txt</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+									<resource>META-INF/cxf/bus-extensions.xml</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+									<resource>META-INF/wsdl.plugin.xml</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+									<resource>META-INF/tools.service.validator.xml</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+									<resource>META-INF/cxf/java2wsbeans.xml</resource>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>.</directory>
+									<filtering>false</filtering>
+									<includes>
+										<include>*.yml</include>
+										<include>*.keystore</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<archive>
+
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+
+						<manifestEntries>
+							<Application-Name>LinSign Signature Service</Application-Name>
+							<Permissions>all-permissions</Permissions>
+							<Codebase>*</Codebase>
+						</manifestEntries>
+
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

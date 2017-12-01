@@ -1,0 +1,7 @@
+pathCRL 	: /var/www/crl-linsign
+pathLog 	: /var/www/logs-linsign
+pathPolicy	: /var/www/policy-linsign
+pathCA 		: /var/www/ca-linsign
+
+validateTLandCRL : true
+logTrace : true

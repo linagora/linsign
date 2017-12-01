@@ -1,0 +1,98 @@
+<configuration debug="true">
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+		<encoder>
+			<pattern>%-5level %F:%L [%thread] - %msg %n</pattern>
+			<!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %F:%L - %msg%n</pattern> -->
+		</encoder>
+	</appender>
+
+	<appender name="debug" class="ch.qos.logback.core.FileAppender">
+		<file>/tmp/linsign/dss-debug.log</file>
+
+		<!-- rewrite file each time -->
+		<append>false</append>
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>%-5level %logger{35}:%L - %msg%n</pattern>
+			<!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %F:%L - %msg%n</pattern> -->
+		</encoder>
+	</appender>
+
+	<!-- <property name="pathLog" value="/var/www/logs-linsign" /> -->
+	<timestamp key="linsignTimestamp" datePattern="yyyy-MM-dd" />
+	<property resource="config" />
+
+	<appender name="linsign"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${pathLog}/linsign_log.xml</file>
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${pathLog}/linsign_log.%d{yyyy-MM-dd}.xml
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<totalSizeCap>3GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder class="eu.europa.esig.dss.web.log.LinSignLogEncoder" />
+	</appender>
+
+
+	<appender name="validation"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${pathLog}/validation_log.xml</file>
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${pathLog}/validation_log.%d{yyyy-MM-dd}.xml
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<totalSizeCap>3GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder class="eu.europa.esig.dss.web.log.LinSignLogEncoder" />
+	</appender>
+
+
+	<!--<logger name="eu.europa" level="DEBUG"> -->
+	<!--<appender-ref ref="STDOUT"/> -->
+	<!--</logger> -->
+	<logger name="org.apache.http" level="WARN" />
+	<logger name="org.apache.xml.security.utils.DigesterOutputStream"
+		level="INFO" />
+	<logger name="org.apache.pdfbox.pdfparser.PDFObjectStreamParser"
+		level="INFO" />
+	<logger name="org.springframework.core" level="INFO" />
+	<logger name="org.springframework.beans" level="INFO" />
+	<logger name="org.springframework.context" level="INFO" />
+	<logger name="org.springframework.context.support" level="INFO" />
+	<logger name="org.apache.commons.digester" level="INFO" />
+	<logger name="org.apache.tiles" level="INFO" />
+	<logger name="org.apache.cxf" level="INFO" />
+	<logger name="org.springframework.web.servlet.resource" level="INFO" />
+	<logger name="org.springframework.web.servlet" level="INFO" />
+	<logger name="org.springframework.web.servlet.handler" level="INFO" />
+	<logger name="org.apache.commons.beanutils.converters" level="INFO" />
+	<logger name="org.apache.commons.beanutils" level="INFO" />
+	<!--<logger name="" level="INFO"/> -->
+	<!--<logger name="" level="INFO"/> -->
+	<!--<logger name="" level="INFO"/> -->
+	<!--<logger name="" level="INFO"/> -->
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<!-- appender-ref ref="debug"/ -->
+	</root>
+
+	<logger name="LinSignLogs" level="INFO">
+		<appender-ref ref="linsign" />
+	</logger>
+
+	<logger name="ValidationLinsignLogs" level="INFO">
+		<appender-ref ref="validation" />
+	</logger>
+
+</configuration>

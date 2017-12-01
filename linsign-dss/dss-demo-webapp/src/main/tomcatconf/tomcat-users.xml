@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat-users>
+	<user name="admin" password="admin" roles="admin" />
+	<user name="linsign" password="linsign" roles="tomcat" />
+</tomcat-users>

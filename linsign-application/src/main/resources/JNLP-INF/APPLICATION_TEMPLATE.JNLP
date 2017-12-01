@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<jnlp codebase="*" href="*" spec="1.0+" >
+	<information>
+		<title>LinSign</title>
+		<vendor>LINAGORA</vendor>
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+	<resources>
+		<j2se href="http://java.sun.com/products/autodl/j2se" version="1.6+" />
+		<jar codebase="*" href="*" main="true" />
+	</resources>
+	<application-desc main-class="org.linagora.linsign.application.LinSignApp">
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+		<argument>*</argument>
+	</application-desc>
+</jnlp>
