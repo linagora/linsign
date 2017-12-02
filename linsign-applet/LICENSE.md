@@ -2,7 +2,7 @@
 Licenses
 ========
 
-See in ``doc/licenses/`` for the license full texts.
+See in `doc/licenses/` for the license full texts.
 
 ------------------------------------------------------------------------------
 
@@ -25,17 +25,17 @@ Libraries
 References
 ----------
 
-AGPL-3.0:
-<http://www.gnu.org/licenses/agpl-3.0.en.html>
+Affero GPL 3.0:
+<https://www.gnu.org/licenses/agpl-3.0.en.html>
 
-LGPL-3.0:
-<http://www.gnu.org/licenses/lgpl-3.0.en.html>
+Lesser GPL 3.0:
+<https://www.gnu.org/licenses/lgpl-3.0.en.html>
 
 MIT Bouncy Castle License:
-<http://www.bouncycastle.org/license.html>
+<https://www.bouncycastle.org/license.html>
 
 Apache License 2.0:
-<http://www.apache.org/licenses/LICENSE-2.0>
+<https://www.apache.org/licenses/LICENSE-2.0>
 
 Mozilla Public License 1.1:
 <https://www.mozilla.org/MPL/1.1/>

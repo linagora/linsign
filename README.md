@@ -1,6 +1,6 @@
-![​LinSign][linsign-logo]
+![LinSign][linsign-logo]
 
-​LinSign
+LinSign
 =======
 
 Electronic signature application
@@ -25,7 +25,7 @@ according to the following formats: XAdES, PAdES, CAdES, ASiC.
 License
 -------
 
-LinSign is published under the GNU Affero General Public License version 3 (AGPL-3.0). 
+LinSign is published under the [GNU Affero General Public License version 3][agpl3] (AGPL-3.0).
 
 
 Trademarks
@@ -60,3 +60,5 @@ FRANCE
 [linsign-logo]: https://www.linsign.org/images/logo_linsign_small.png
 [linagora-logo]: https://www.linsign.org/images/logo_linagora_small.png
 [linagora]: https://linagora.com/
+[agpl3]: https://www.gnu.org/licenses/agpl-3.0.en.html
+

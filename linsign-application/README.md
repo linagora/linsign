@@ -1,5 +1,5 @@
 
-​LinSign Application
+LinSign Application
 ===================
 
 Server module
@@ -9,14 +9,14 @@ Server module
 Identification
 --------------
 
-Module: **​LinSign Application**  
+Module: **LinSign Application**  
 Version: **2.1.14** (2017-12-01)
 
 
 Description
 -----------
 
-**​LinSign Application** is a module of LinSign, which provides the server
+**LinSign Application** is a module of LinSign, which provides the server
 of the application.
 
 **LinSign** is an electronic signature application based on the European
@@ -27,7 +27,7 @@ according to the following formats: XAdES, PAdES, CAdES, ASiC.
 License
 -------
 
-LinSign is published under the GNU Affero General Public License version 3 (AGPL-3.0). 
+LinSign is published under the [GNU Affero General Public License version 3][agpl3] (AGPL-3.0).
 
 
 Trademarks
@@ -59,3 +59,5 @@ FRANCE
 ------------------------------------------------------------------------------
 
 [linagora]: https://linagora.com/
+[agpl3]: https://www.gnu.org/licenses/agpl-3.0.en.html
+
